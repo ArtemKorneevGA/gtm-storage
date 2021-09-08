@@ -1,0 +1,52 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+
+</head>
+
+<body>
+
+    <p>Test gtm-storage.</p>
+    <button id="plus_one">Plus one</button>
+    <button id="update_state">Update state</button>
+
+    <p>Result: </p>
+    <p id="result">0</p>
+
+    <script src="gtm_storage.js"></script>
+    <script>
+
+        let gtmStorage = new GtmStorage();
+        gtmStorage.clean();
+        document.getElementById('plus_one').onclick = () => {
+            gtmStorage.plus('clicks')
+            gtmStorage.save()
+            console.log(gtmStorage.get('clicks'));
+            document.getElementById('result').innerText = gtmStorage.get('clicks');
+        }
+
+        document.getElementById('update_state').onclick = () => {
+            gtmStorage.refresh()
+            console.log(gtmStorage.get('clicks'));
+            document.getElementById('result').innerText = gtmStorage.get('clicks');
+        }
+
+    </script>
+
+    <script>
+
+    </script>
+
+</body>
+
+</html>
